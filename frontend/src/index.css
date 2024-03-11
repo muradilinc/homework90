@@ -1,0 +1,25 @@
+.center {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.draw{
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.panel{
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+.clear {
+  font-weight: bold;
+  padding: 9px 15px;
+  font-size: 22px;
+  background: rgb(255, 255, 255);
+  border: 0 solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 1px 4px;
+  border-radius: 4px;
+}
