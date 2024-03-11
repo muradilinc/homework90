@@ -15,7 +15,7 @@ const router = express.Router();
 const activeConnection: ActiveConnection = {};
 let draw: Draw[] = [];
 
-router.ws('/draw', (ws, req) => {
+router.ws('/draw', (ws, _req) => {
   const id = crypto.randomUUID();
   console.log('User connected id=', id);
   activeConnection[id] = ws;
@@ -24,7 +24,6 @@ router.ws('/draw', (ws, req) => {
   ws.on('message', (message) => {
     const parsedData = JSON.parse(message.toString()) as IncomingData;
     draw.push(parsedData.payload);
-    // ws.send(JSON.stringify({type: 'DRAW_LINE', payload: activeConnection.draw}));
     if (parsedData.type === 'DRAW_LINE') {
       Object.values(activeConnection).forEach(connection => {
         const outgoingData = {type: 'DRAW_LINE', payload: draw};
